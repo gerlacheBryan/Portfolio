@@ -1,0 +1,524 @@
+:root {
+    --primary: #090D0D;
+    --secondary: #F5EFED;
+    --third: white;
+}
+
+@font-face {
+    font-family: "Geomanist";
+    src: url("../../Font/Geomanist/Geomanist-Complete-Desktop/Geomanist-Regular.otf") format("woff2");
+
+}
+
+@font-face {
+    font-family: "Argesta";
+    src: url("../../Font/Argesta/ArgestaText-Bold.otf") format("woff2");
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#canvas1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#FEF86C, #ff9b40);
+    z-index: -1;
+}
+
+#canvas2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.accueil {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+h1 {
+    font-family: 'Geomanist';
+    font-size: 5em;
+}
+
+h2 {
+    font-family: 'Geomanist';
+    font-size: 3em;
+}
+
+ul {
+    font-family: 'Argesta';
+    font-size: 1.5em;
+    position: absolute;
+    right: 8em;
+    bottom: 7em;
+    list-style: none;
+}
+
+li {
+    padding: 0.5em;
+    transition: background-position-x 0.9s linear;
+}
+
+a {
+    font-size: 22px;
+    color: black;
+    text-decoration: none;
+    transition: all 0.70s;
+}
+
+li:hover {
+    padding-left: 3em;
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEi%0D%0AIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhs%0D%0AaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0%0D%0AaD0iMzkwcHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDM5MCA1MCIgZW5hYmxlLWJhY2tn%0D%0Acm91bmQ9Im5ldyAwIDAgMzkwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZmlsbD0i%0D%0Abm9uZSIgc3Ryb2tlPSIjZDk0ZjVjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGlt%0D%0AaXQ9IjEwIiBkPSJNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMAoJYzEzLjc1LDAsMjguNzQtMzgu%0D%0ANzc4LDQ2LjE2OC0xOS40MTZDMTkyLjY2OSw0Ni41LDI0My42MDMsNDcuNTg1LDI2MCw0Ny41ODVj%0D%0AMzEuODIxLDAsMTMwLDAsMTMwLDAiLz4KPC9zdmc+Cg==");
+    animation: line 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes line {
+    0% {
+        background-position-x: 390px;
+    }
+}
+
+li:hover a {
+    color: #628395;
+}
+
+.ArrowScroll {
+    position: absolute;
+    bottom: 2em;
+}
+
+p {
+    margin-bottom: 1em;
+    font-family: 'Argesta';
+    font-size: 1.2em;
+}
+
+.box {
+    margin: 0 auto;
+    width: 26px;
+    height: 20px;
+}
+
+.arrow {
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    --pos-x1: 0;
+    --pos-x2: calc(100% - (1 / 3 * 100%));
+    --pos-y1: calc(1 / 3 * 100%);
+    --pos-y2: calc(2 / 3 * 100%);
+
+    width: 100%;
+    height: 100%;
+    background: black;
+
+    clip-path: polygon(
+            var(--pos-x1) var(--pos-y1),
+            var(--pos-x2) var(--pos-y1),
+            var(--pos-x2) 0,
+            100% 50%,
+            var(--pos-x2) 100%,
+            var(--pos-x2) var(--pos-y2),
+            var(--pos-x1) var(--pos-y2)
+    );
+
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: rotate(90deg) translateX(0);
+
+    }
+    40% {
+        transform: rotate(90deg) translateX(-10px);
+    }
+}
+
+/*************** Présentation ************/
+
+.presentation {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: var(--primary);
+}
+
+.presentation h1 {
+    margin-top: 1.5em;
+}
+
+span {
+    font-family: 'Geomanist';
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.content {
+    position: relative;
+}
+
+.content h2 {
+    position: absolute;
+    color: white;
+    animation: animate 4s ease-in-out infinite;
+    margin-top: 1em;
+    margin-left: 1.5em;
+}
+
+@keyframes animate {
+    0%, 100% {
+        clip-path: polygon(0 0, 28% 0, 57% 0, 82% 0, 95% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+    50% {
+        clip-path: polygon(0 77%, 24% 82%, 55% 80%, 77% 79%, 94% 77%, 100% 86%, 100% 100%, 0% 100%);
+    }
+}
+
+section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("../../Images/wave.png");
+    background-size: 1000px 100px;
+}
+
+section .wave.wave1 {
+    animation: animates 30s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
+    bottom: 0;
+}
+
+section .wave.wave2 {
+    animation: animate2 15s linear infinite;
+    z-index: 999;
+    opacity: 0.5;
+    animation-delay: -5s;
+    bottom: 10px;
+}
+
+section .wave.wave3 {
+    animation: animate2 30s linear infinite;
+    z-index: 998;
+    opacity: 0.2;
+    animation-delay: -2s;
+    bottom: 15px;
+}
+
+section .wave.wave4 {
+    animation: animate2 5s linear infinite;
+    z-index: 997;
+    opacity: 0.7;
+    animation-delay: -2s;
+    bottom: 20px;
+}
+
+@keyframes animates {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 1000px;
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: -1000px;
+    }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.container .card {
+    position: relative;
+    border-radius: 10px;
+    max-width: 300px;
+    height: 215px;
+    background: white;
+    margin: 30px 10px;
+    padding: 20px 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover {
+    height: 500px;
+}
+
+.container .card .imgBx {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    top: -60px;
+    left: 6px;
+    z-index: 1;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.container .card .imgBx img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.container .card .content2 {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+    color: #111;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover .content2 {
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    transition-delay: 0.3s;
+}
+
+h3 {
+    font-family: Geomanist;
+    margin-bottom: 0.3em;
+}
+
+.paragraphePresentation {
+    font-size: 0.7em;
+}
+
+/*************** Projets ************/
+
+.global {
+    position: relative;
+    width: 100%;
+}
+
+.global .projet {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+}
+
+.global .projet:nth-child(1) {
+    background: url("../../Images/Image_sans_nom_portfolio.png");
+    background-size: cover;
+}
+
+.global .projet:nth-child(2) {
+    background: url("../../Images/Curriculum_vitae_portfolio.png");
+    background-size: cover;
+}
+
+.titreProjet {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1em;
+    color: #111;
+
+}
+
+.invisible {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.neon {
+    font-size: 1em;
+    display: table-cell;
+    margin: 0;
+    animation: neon 2s linear infinite;
+}
+
+.neon:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.neon:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.neon:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.neon:nth-child(4) {
+    animation-delay: 0.75s;
+}
+
+.neon:nth-child(5) {
+    animation-delay: 1s;
+}
+
+.neon:nth-child(6) {
+    animation-delay: 1.25s;
+}
+
+.neon:nth-child(7) {
+    animation-delay: 1.50s;
+}
+
+.neon:nth-child(8) {
+    animation-delay: 1.75s;
+}
+
+.neon:nth-child(9) {
+    animation-delay: 2s;
+}
+
+.neon:nth-child(10) {
+    animation-delay: 2.25s;
+}
+
+.neon:nth-child(11) {
+    animation-delay: 2.50s;
+}
+
+@keyframes neon {
+    0%, 100% {
+        color: #fff;
+        filter: blur(2px);
+        text-shadow: 0 0 10px #00b3ff, 0 0 20px #00b3ff, 0 0 400px #00b3ff, 0 0 80px #00b3ff, 0 0 120px #00b3ff, 0 0 200px #00b3ff, 0 0 300px #00b3ff, 0 0 400px #00b3ff, 0 0 500px #00b3ff, 0 0 600px #00b3ff, 0 0 700px #00b3ff;
+    }
+    5%, 95% {
+        color: #111;
+        filter: blur(0px);
+        text-shadow: none;
+    }
+}
+
+.espace {
+    padding-right: 0.25em;
+    font-size: 1em;
+}
+.contact{
+    height: 100vh;
+    background: var(--primary);
+    padding-top: 2em;
+}
+.titreContact{
+    margin-bottom: 2em;
+    position: relative;
+    color: var(--third);
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 20px #00b3ff;
+
+}
+form{
+    display: grid;
+    font-family: Poppins;
+    grid-template-columns: repeat(2,1fr);
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--third);
+    grid-gap: 20px;
+}
+input,select,textarea{
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+label{
+    display: block;
+}
+textarea{
+    grid-column: 1/5;
+    resize: none;
+    height: 150px;
+}
+.contactDemande{
+    grid-column: 1/3;
+}
+button{
+    padding: 10px 20px;
+    box-sizing: border-box;
+    float: right;
+    background: var(--third);
+    border: none;
+}
+.contactBouton{
+    grid-column: 2/3;
+}
+.social-media{
+    border-top: 1px solid white;
+    padding-top: 30px;
+    display: flex;
+    margin: 5em auto 0;
+    max-width: 800px;
+    align-items: center;
+    justify-content: center;
+}
+.social-media a{
+    margin-right: 2em;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+button:hover{
+    background: #03e9f4;
+    color: white;
+    box-shadow: 0 0 5px #03e9f4
+}
+
+.facebook{
+    background-image: url("../../Images/social-media1.png");
+}
+.twitter{
+    background-image: url("../../Images/social-media2.png");
+}
+.linkedin{
+    background-image: url("../../Images/social-media3.png");
+}
+.social-media a:hover{
+    transition: 0.5s;
+    transform: scale(2);
+}
+
+
+
+
